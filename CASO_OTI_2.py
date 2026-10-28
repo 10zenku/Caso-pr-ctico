@@ -1,3 +1,55 @@
+
+class MatriculaGeneral:
+    def calcular(self):
+        return 60.00
+
+
+class MatriculaExtemporanea(MatriculaGeneral):
+    def calcular(self):
+        return super().calcular() + 15.00
+
+
+class IndiceDesaprobatorio(MatriculaGeneral):
+    def calcular(self):
+        return super().calcular() + 15.00
+
+
+class BecaViolencia(MatriculaGeneral):
+    def calcular(self):
+        return super().calcular() / 2
+
+
+# Versión 1
+class Matricula1(
+    BecaViolencia,
+    IndiceDesaprobatorio,
+    MatriculaExtemporanea
+):
+    pass
+
+
+# Versión 2
+class Matricula2(
+    IndiceDesaprobatorio,
+    MatriculaExtemporanea,
+    BecaViolencia
+):
+    pass
+
+#Crear los objetos
+a = Matricula1()
+b = Matricula2()
+
+print("Versión 1:", a.calcular())
+print("Versión 2:", b.calcular())
+
+
+
+
+
+
+
+#OTRA MANERA
 # Clase padre
 class MatriculaBase:
     def __init__(self):
